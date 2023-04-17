@@ -1,9 +1,9 @@
 import { useState } from "react";
-
 import AlbumItem from "./AlbumItem";
 import type { Album } from "@/types";
+import { SortAlbumsSelect } from "./SortAlbumsSelect";
 import { ListGridSwitch } from "./ListGridSwitch";
-import { AlbumListWrapper } from "./styles";
+import { ListHeader, AlbumListWrapper } from "./styles";
 
 type Props = {
   albums: Album[];
@@ -12,19 +12,30 @@ type Props = {
 };
 
 export type ListView = "list" | "grid";
+export type SortMethod = "id" | "addedDate" | "name";
 const AlbumList = ({ albums, onDelete, onSetBest }: Props) => {
   const [view, setView] = useState<ListView>("list");
+  const [sort, setSort] = useState<SortMethod>("addedDate");
+
+  const sortedAlbums = [...albums].sort((a, b) => {
+    if (sort === "id") return a.id.localeCompare(b.id);
+    if (sort === "name") return a.name.localeCompare(b.name);
+    return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime();
+  });
 
   return (
     <>
-      <ListGridSwitch
-        listStyle={view === "list" ? "list" : "grid"}
-        onChange={(view) => {
-          setView(view);
-        }}
-      />
+      <ListHeader>
+        <SortAlbumsSelect sort={sort} onChange={setSort} />
+        <ListGridSwitch
+          listStyle={view === "list" ? "list" : "grid"}
+          onChange={(view) => {
+            setView(view);
+          }}
+        />
+      </ListHeader>
       <AlbumListWrapper type={view}>
-        {albums.map((album) => (
+        {sortedAlbums.map((album) => (
           <AlbumItem
             key={album.id}
             album={album}

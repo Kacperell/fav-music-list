@@ -1,4 +1,4 @@
-import { FormControlLabel, FormGroup, Switch } from "@material-ui/core";
+import { FormControlLabel, Switch } from "@material-ui/core";
 import type { ListView } from "./index";
 import { ListGridSwitchWrapper } from "./styles";
 interface Props {

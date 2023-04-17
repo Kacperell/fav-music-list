@@ -19,9 +19,12 @@ const AlbumItem: React.FC<Props> = ({ album, onDelete, onSetBest }) => {
     onSetBest(album.id, changeToBest);
   };
 
+  const date = new Date(album.dateAdded);
+  const formattedDate = date.toLocaleString();
+
   return (
     <Container>
-      <Title>{album.name}</Title>
+      <Title primary={album.name} secondary={formattedDate} />
       <ButtonsContainer>
         <HeartIcon active={album.isBest} onClick={handleBestClick} />
         <DeleteButton onClick={handleRemoveClick} />

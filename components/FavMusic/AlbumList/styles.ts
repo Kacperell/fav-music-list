@@ -6,7 +6,7 @@ interface ListProps {
 }
 const switchBreakpoint = "768px";
 
-export const AlbumListWrapper = styled.div<ListProps>`
+export const AlbumListWrapper = styled.ul<ListProps>`
   display: ${({ type }) => (type === "grid" ? "grid" : "block")};
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1rem;

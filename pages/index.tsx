@@ -1,12 +1,15 @@
 import FavMusisc from "@/components/FavMusic";
-
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { GetServerSidePropsContext } from "next";
 
 export default function Home() {
   return (
-    <main>
-      <FavMusisc />
-    </main>
+    <>
+      <LanguageSwitcher />
+      <main>
+        <FavMusisc />
+      </main>
+    </>
   );
 }
 export async function getStaticProps({ locale }: GetServerSidePropsContext) {

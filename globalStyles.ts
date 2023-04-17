@@ -108,12 +108,7 @@ input {
   -webkit-appearance: none;
   border-radius: 0;
 }
-/* main{
-    display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-} */
+
 body {
   display: flex;
   flex-direction: column;

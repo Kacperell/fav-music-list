@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import AlbumItem from "./AlbumItem";
 import type { Album } from "@/types";
 import { SortAlbumsSelect } from "./SortAlbumsSelect";
@@ -17,11 +17,13 @@ const AlbumList = ({ albums, onDelete, onSetBest }: Props) => {
   const [view, setView] = useState<ListView>("list");
   const [sort, setSort] = useState<SortMethod>("addedDate");
 
-  const sortedAlbums = [...albums].sort((a, b) => {
-    if (sort === "id") return a.id.localeCompare(b.id);
-    if (sort === "name") return a.name.localeCompare(b.name);
-    return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime();
-  });
+  const sortedAlbums = useMemo(() => {
+    return [...albums].sort((a, b) => {
+      if (sort === "id") return a.id.localeCompare(b.id);
+      if (sort === "name") return a.name.localeCompare(b.name);
+      return new Date(b.dateAdded).getTime() - new Date(a.dateAdded).getTime();
+    });
+  }, [albums, sort]);
 
   return (
     <>

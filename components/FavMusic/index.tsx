@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import AddAlbumForm from "./AddAlbumForm";
 import AlbumList from "./AlbumList";
 import type { Album } from "@/types";
@@ -27,7 +27,6 @@ const HomePage = () => {
 
   const handleSetAsBestOfTheBest = useCallback(
     (albumId: string, changeToBest: boolean) => {
-      console.log("handleSetAsBestOfTheBest", albumId, changeToBest);
       AlbumStorage.updateAlbum(albumId, {
         isBest: changeToBest,
       });

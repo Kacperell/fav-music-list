@@ -1,0 +1,11 @@
+{
+  "AddAlbumForm": {
+    "newOfNewAlbum": "Nazwa albumu",
+    "button": "Dodaj album"
+  },
+  "AlbumList": {
+    "sortDate": "Data",
+    "sortName": "Nazwa",
+    "grid": "Widok siatki"
+  }
+}

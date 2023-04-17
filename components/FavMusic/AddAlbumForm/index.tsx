@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Form } from "./styles";
 import { Button, FormControl, Input, InputLabel } from "@material-ui/core";
 import type { Album } from "@/types";
+import { useTranslations } from "next-intl";
 
 interface Props {
   addAlbum: (album: Pick<Album, "name">) => void;
@@ -9,6 +10,7 @@ interface Props {
 
 const AddAlbumForm = ({ addAlbum }: Props) => {
   const [name, setName] = useState("");
+  const t = useTranslations("AddAlbumForm");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,7 +28,7 @@ const AddAlbumForm = ({ addAlbum }: Props) => {
             color="secondary"
             htmlFor="album-name-input"
           >
-            Album name
+            {t("newOfNewAlbum")}
           </InputLabel>
           <Input
             color="secondary"
@@ -36,7 +38,7 @@ const AddAlbumForm = ({ addAlbum }: Props) => {
         </FormControl>
       </FormControl>
       <Button variant="contained" color="secondary" type="submit">
-        Add to list
+        {t("button")}
       </Button>
     </Form>
   );

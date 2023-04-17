@@ -1,6 +1,7 @@
 import type { SortMethod } from "./index";
 import { SortAlbumsSelectWrapper } from "./styles";
 import { MenuItem } from "@material-ui/core";
+import { useTranslations } from "next-intl";
 
 interface Props {
   onChange: (sort: SortMethod) => void;
@@ -8,6 +9,7 @@ interface Props {
 }
 
 export const SortAlbumsSelect = ({ onChange, sort }: Props) => {
+  const t = useTranslations("AlbumList");
   return (
     <SortAlbumsSelectWrapper
       color="secondary"
@@ -16,9 +18,9 @@ export const SortAlbumsSelect = ({ onChange, sort }: Props) => {
         onChange(e.target.value as SortMethod);
       }}
     >
-      <MenuItem value="addedDate">Added Date</MenuItem>
+      <MenuItem value="addedDate"> {t("sortDate")}</MenuItem>
       <MenuItem value="id">ID</MenuItem>
-      <MenuItem value="name">Name</MenuItem>
+      <MenuItem value="name"> {t("sortName")}</MenuItem>
     </SortAlbumsSelectWrapper>
   );
 };

@@ -27,12 +27,12 @@ class AlbumStorage {
     this.saveAlbums(albums);
   }
 
-  removeAlbum(id: string): void {
+  public removeAlbum(id: string): void {
     const albums = this.getAlbums().filter((album) => album.id !== id);
     this.saveAlbums(albums);
   }
 
-  updateAlbum(id: string, updatedAlbum: Partial<Album>): void {
+  public updateAlbum(id: string, updatedAlbum: Partial<Album>): void {
     const albums = this.getAlbums().map((album) => {
       if (album.id === id) {
         return {

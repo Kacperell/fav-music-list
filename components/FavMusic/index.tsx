@@ -5,7 +5,7 @@ import type { Album } from "@/types";
 import { Container } from "./styles";
 import AlbumStorage from "@/utils/localstorage/AlbumsStorage";
 
-const HomePage = () => {
+const FavMusic = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
 
   const refeatchAlbumsFromStorage = () => {
@@ -47,4 +47,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default FavMusic;
